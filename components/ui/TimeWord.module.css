@@ -1,0 +1,33 @@
+.word {
+  margin: var(--space-4) 0 var(--space-6);
+  font-size: clamp(68px, 17vw, 96px);
+  font-weight: 800;
+  line-height: 0.88;
+  letter-spacing: -0.04em;
+  color: var(--rose);
+}
+
+/* Resting state is the finished state — this only plays when the element
+   is actually reached, and never under reduced motion. */
+.word[data-played="true"] {
+  animation: settle 900ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes settle {
+  from {
+    opacity: 0;
+    letter-spacing: 0.06em;
+    filter: blur(14px);
+  }
+  to {
+    opacity: 1;
+    letter-spacing: -0.04em;
+    filter: blur(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .word[data-played="true"] {
+    animation: none;
+  }
+}

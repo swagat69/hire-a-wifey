@@ -1,0 +1,88 @@
+.head {
+  max-width: 620px;
+  margin-bottom: var(--space-8);
+}
+
+/* Mobile: a swipe rail with snap points. Desktop: three columns max.
+   No JS carousel, no dots, no autoplay. */
+.rail {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(268px, 78vw);
+  gap: var(--space-5);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: var(--gutter);
+  padding-inline: var(--gutter);
+  margin-inline: calc(var(--gutter) * -1);
+  padding-bottom: var(--space-4);
+  overscroll-behavior-x: contain;
+  scrollbar-width: thin;
+}
+
+.item {
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  padding-top: var(--space-5);
+  border-top: 2px solid var(--ink);
+}
+
+@media (min-width: 900px) {
+  .rail {
+    grid-auto-flow: row;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-7);
+    overflow: visible;
+    padding-inline: 0;
+    margin-inline: 0;
+    padding-bottom: 0;
+  }
+}
+
+.stars {
+  display: flex;
+  gap: 3px;
+  margin-bottom: var(--space-4);
+  color: var(--rose);
+}
+
+.quote {
+  flex: 1;
+  margin-bottom: var(--space-5);
+  font-size: clamp(17px, 2.2vw, 19px);
+  line-height: 1.5;
+  letter-spacing: -0.012em;
+}
+
+.attrib {
+  font-size: 14px;
+  font-weight: 650;
+  color: var(--ink-faint);
+}
+
+/* --- Dev-only reminder (never rendered in production) -------------- */
+
+.pending {
+  padding: var(--space-6);
+  border: 1px dashed var(--rose-deep);
+  border-radius: var(--radius-md);
+  background: var(--blush);
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: var(--ink-soft);
+}
+
+.pending strong {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--ink);
+}
+
+.pending code {
+  font-family: ui-monospace, "SFMono-Regular", Menlo, monospace;
+  font-size: 13px;
+  background: rgba(255, 255, 255, 0.7);
+  padding: 1px 5px;
+  border-radius: 3px;
+}

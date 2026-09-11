@@ -1,0 +1,102 @@
+.head {
+  display: grid;
+  gap: var(--space-5);
+  margin-bottom: var(--space-8);
+}
+
+@media (min-width: 1024px) {
+  .head {
+    grid-template-columns: 6fr 6fr;
+    gap: 80px;
+    align-items: end;
+  }
+}
+
+.headBody {
+  max-width: 560px;
+}
+
+/* --- Panels -------------------------------------------------------
+   Full-width rows on hairlines. Not three feature cards (§19).
+   ------------------------------------------------------------------ */
+
+.list {
+  border-top: 1px solid var(--line);
+}
+
+.row {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: var(--space-4) var(--space-5);
+  align-items: center;
+  padding-block: var(--space-6);
+  border-bottom: 1px solid var(--line);
+  text-decoration: none;
+}
+
+@media (min-width: 900px) {
+  .row {
+    grid-template-columns: 320px 1fr auto;
+    gap: var(--space-7);
+    padding-block: var(--space-7);
+  }
+}
+
+/* On hover the row's own hairline draws itself in pink, left to right.
+   No bar, no card, no fill — the divider it already has does the work. */
+.row::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 1px;
+  background: var(--rose);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 420ms var(--ease);
+}
+
+@media (hover: hover) {
+  .row:hover::before {
+    transform: scaleX(1);
+  }
+}
+
+.title {
+  font-size: clamp(21px, 3.4vw, 30px);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+
+.body {
+  max-width: 52ch;
+  font-size: 16.5px;
+  line-height: 1.55;
+  color: var(--ink-soft);
+}
+
+@media (max-width: 899px) {
+  .body {
+    grid-column: 1 / -1;
+  }
+}
+
+.arrow {
+  flex: none;
+  color: var(--ink-faint);
+  transition: transform 260ms var(--ease), color 260ms var(--ease);
+}
+
+@media (hover: hover) {
+  .row:hover .arrow {
+    color: var(--rose-deep);
+    transform: translateX(6px);
+  }
+}
+
+.footer {
+  margin-top: var(--space-8);
+}

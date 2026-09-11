@@ -1,0 +1,79 @@
+.grid {
+  display: grid;
+  gap: var(--space-7);
+}
+
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: 5fr 7fr;
+    gap: 96px;
+    align-items: start;
+  }
+}
+
+@media (min-width: 1024px) {
+  .left {
+    position: sticky;
+    top: 120px;
+  }
+}
+
+.reasons {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 0 var(--space-7);
+}
+
+.reason {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 12px;
+  align-items: baseline;
+  padding-block: 13px;
+  border-bottom: 1px solid var(--line);
+  font-size: 16px;
+  line-height: 1.45;
+}
+
+.tick {
+  color: var(--rose-deep);
+  transform: translateY(2px);
+}
+
+/* --- The closing statement ----------------------------------------
+   Typography does the work here — no icon, no panel (§20).
+   ------------------------------------------------------------------ */
+
+.closer {
+  margin-top: var(--space-8);
+  padding-top: var(--space-7);
+  border-top: 2px solid var(--ink);
+}
+
+.statement {
+  font-size: clamp(32px, 6.6vw, 62px);
+  line-height: 1.0;
+  font-weight: 700;
+  letter-spacing: -0.038em;
+  text-wrap: balance;
+}
+
+.statement em {
+  font-family: var(--font-serif), Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.022em;
+  color: var(--rose);
+}
+
+.closerBody {
+  max-width: 52ch;
+  margin-top: var(--space-5);
+  font-size: clamp(17px, 2.2vw, 19px);
+  line-height: 1.6;
+  color: var(--ink-soft);
+}
+
+.actions {
+  margin-top: var(--space-6);
+}

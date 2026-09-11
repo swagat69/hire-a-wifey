@@ -1,0 +1,135 @@
+.btn {
+  --btn-bg: var(--ink);
+  --btn-fg: var(--white);
+  --btn-border: var(--ink);
+
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 52px;
+  padding: 0 24px;
+  border: 1px solid var(--btn-border);
+  border-radius: var(--radius-sm);
+  background: var(--btn-bg);
+  color: var(--btn-fg);
+  font-size: 14.5px;
+  font-weight: 700;
+  letter-spacing: 0.045em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  overflow: hidden;
+  transition:
+    transform 180ms var(--ease),
+    background-color 180ms var(--ease),
+    border-color 180ms var(--ease),
+    color 180ms var(--ease);
+}
+
+.label {
+  position: relative;
+  z-index: 1;
+}
+
+/* The pink accent sweeps in from the bottom on hover — the only place
+   pink becomes a surface, and only momentarily. */
+.btn::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 100%;
+  background: var(--rose);
+  transform: translateY(101%);
+  transition: transform 260ms var(--ease);
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+@media (hover: hover) {
+  .btn:hover::after {
+    transform: translateY(0);
+  }
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+/* --- Primary: black on light ------------------------------------- */
+.primary:hover {
+  color: var(--ink);
+  border-color: var(--rose);
+}
+
+/* --- Secondary: outline on light --------------------------------- */
+.secondary {
+  --btn-bg: transparent;
+  --btn-fg: var(--ink);
+  --btn-border: rgba(26, 24, 25, 0.28);
+}
+
+.secondary:hover {
+  border-color: var(--ink);
+}
+
+@media (hover: hover) {
+  .secondary:hover {
+    color: var(--ink);
+  }
+}
+
+/* --- On dark backgrounds ----------------------------------------- */
+.onDark {
+  --btn-bg: var(--white);
+  --btn-fg: var(--ink);
+  --btn-border: var(--white);
+}
+
+.onDark:hover {
+  color: var(--ink);
+  border-color: var(--rose);
+}
+
+.ghostDark {
+  --btn-bg: transparent;
+  --btn-fg: var(--white);
+  --btn-border: rgba(255, 255, 255, 0.34);
+}
+
+@media (hover: hover) {
+  .ghostDark:hover {
+    color: var(--ink);
+    border-color: var(--rose);
+  }
+}
+
+/* --- Modifiers ---------------------------------------------------- */
+.full {
+  width: 100%;
+}
+
+.compact {
+  min-height: 44px;
+  padding: 0 18px;
+  font-size: 13px;
+}
+
+.large {
+  min-height: 56px;
+  padding: 0 30px;
+  font-size: 15px;
+}
+
+@media (max-width: 479px) {
+  .btn {
+    width: 100%;
+  }
+
+  .compact {
+    width: auto;
+  }
+}

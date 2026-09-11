@@ -1,0 +1,61 @@
+.main {
+  display: flex;
+  align-items: center;
+  min-height: 64vh;
+  padding-block: var(--section-y-lg);
+}
+
+.inner {
+  max-width: 640px;
+}
+
+.title {
+  margin-bottom: var(--space-5);
+}
+
+.contact {
+  margin-top: var(--space-7);
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--line);
+}
+
+.contactLabel {
+  margin-bottom: var(--space-3);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.contactLink {
+  display: block;
+  padding-block: 5px;
+  font-size: clamp(17px, 2.4vw, 21px);
+  font-weight: 700;
+  letter-spacing: -0.024em;
+  text-decoration: none;
+  word-break: break-word;
+}
+
+.contactLink:hover {
+  color: var(--rose-ink);
+}
+
+.actions {
+  margin-top: var(--space-6);
+}
+
+.note {
+  margin-top: var(--space-5);
+  font-size: 15px;
+  color: var(--ink-soft);
+}
+
+.note a {
+  font-weight: 650;
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: var(--rose);
+  text-underline-offset: 3px;
+}

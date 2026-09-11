@@ -1,0 +1,36 @@
+.wrap {
+  margin: 0;
+}
+
+.svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: var(--white);
+}
+
+.label {
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-size: 14px;
+  font-weight: 650;
+  letter-spacing: 0.01em;
+  fill: var(--ink);
+}
+
+.bayLabel {
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  fill: var(--rose-ink);
+  fill-opacity: 0.75;
+}
+
+.caption {
+  margin-top: 10px;
+  font-size: 12.5px;
+  letter-spacing: 0.01em;
+  color: var(--ink-faint);
+}

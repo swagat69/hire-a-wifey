@@ -1,0 +1,68 @@
+.grid {
+  display: grid;
+  gap: var(--space-7);
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: 520px 1fr;
+    gap: 80px;
+  }
+}
+
+.figure {
+  margin: 0;
+}
+
+.frame {
+  position: relative;
+  aspect-ratio: 1040 / 1080;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--off-white);
+}
+
+.frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 500ms var(--ease);
+}
+
+@media (hover: hover) {
+  .figure:hover img {
+    transform: scale(1.02);
+  }
+}
+
+.copy {
+  max-width: 560px;
+}
+
+.heading {
+  margin-bottom: var(--space-5);
+}
+
+.body p {
+  margin-bottom: var(--space-4);
+}
+
+/* The turn in the argument. Scale and the logo's serif carry it — it needs
+   no rule, bar or box beside it to register. */
+.pull {
+  margin-block: var(--space-6);
+  font-size: clamp(28px, 4.6vw, 40px);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+  text-wrap: balance;
+}
+
+.after p {
+  margin-bottom: var(--space-4);
+}
+
+.actions {
+  margin-top: var(--space-6);
+}

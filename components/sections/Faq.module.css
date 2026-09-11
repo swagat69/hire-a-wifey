@@ -1,0 +1,99 @@
+.wrap {
+  max-width: 860px;
+  margin-inline: auto;
+}
+
+.head {
+  margin-bottom: var(--space-7);
+}
+
+/* A single elegant list. Never two columns (§28). */
+.list {
+  border-top: 1px solid var(--line);
+}
+
+.row {
+  border-bottom: 1px solid var(--line);
+}
+
+.q {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-5);
+  width: 100%;
+  min-height: 68px;
+  padding: 16px 0;
+  background: none;
+  border: 0;
+  text-align: left;
+  font-size: clamp(16px, 2.2vw, 18px);
+  font-weight: 650;
+  letter-spacing: -0.015em;
+  line-height: 1.35;
+  cursor: pointer;
+  transition: color 180ms var(--ease);
+}
+
+@media (min-width: 768px) {
+  .q {
+    min-height: 76px;
+  }
+}
+
+@media (hover: hover) {
+  .q:hover {
+    color: var(--rose-ink);
+  }
+}
+
+.icon {
+  flex: none;
+  color: var(--rose-deep);
+  transition: transform 260ms var(--ease);
+}
+
+.q[aria-expanded="true"] .icon {
+  transform: rotate(45deg);
+}
+
+/* 0fr → 1fr gives a real height transition without measuring anything. */
+.panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 280ms var(--ease);
+}
+
+.panel[data-open="true"] {
+  grid-template-rows: 1fr;
+}
+
+.panelInner {
+  overflow: hidden;
+  visibility: hidden;
+  opacity: 0;
+  transition:
+    opacity 200ms var(--ease),
+    visibility 0s linear 280ms;
+}
+
+.panel[data-open="true"] .panelInner {
+  visibility: visible;
+  opacity: 1;
+  transition:
+    opacity 260ms var(--ease) 60ms,
+    visibility 0s;
+}
+
+.a {
+  max-width: 68ch;
+  padding-right: var(--space-6);
+  padding-bottom: 28px;
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--ink-soft);
+}
+
+.footer {
+  margin-top: var(--space-7);
+}

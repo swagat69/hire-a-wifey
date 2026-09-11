@@ -1,0 +1,50 @@
+.bar {
+  position: fixed;
+  left: 16px;
+  right: 16px;
+  bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+  z-index: 90;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 54px;
+  border-radius: var(--radius-sm);
+  background: var(--ink);
+  color: var(--white);
+  font-size: 14.5px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-decoration: none;
+  box-shadow: 0 8px 26px -8px rgba(26, 24, 25, 0.5);
+  opacity: 0;
+  transform: translateY(120%);
+  pointer-events: none;
+  transition:
+    opacity 240ms var(--ease),
+    transform 300ms var(--ease);
+}
+
+.bar[data-visible="true"] {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+}
+
+.bar:active {
+  background: var(--rose-deep);
+}
+
+/* Mobile only — the header CTA covers every other viewport. */
+@media (min-width: 1024px) {
+  .bar {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bar {
+    transition: opacity 120ms linear;
+    transform: none;
+  }
+}

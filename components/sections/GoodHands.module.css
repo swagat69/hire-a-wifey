@@ -1,0 +1,68 @@
+.grid {
+  display: grid;
+  gap: var(--space-8);
+}
+
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 96px;
+    align-items: start;
+  }
+}
+
+.copy {
+  max-width: 480px;
+}
+
+.heading {
+  margin-bottom: var(--space-5);
+}
+
+.body p {
+  margin-bottom: var(--space-4);
+  color: var(--ink-soft);
+}
+
+.actions {
+  margin-top: var(--space-6);
+}
+
+/* Four rows on a hairline, not four boxes (§12: no giant shield icons). */
+.list {
+  border-top: 1px solid rgba(26, 24, 25, 0.12);
+}
+
+.item {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-4);
+  align-items: baseline;
+  padding-block: var(--space-5);
+  border-bottom: 1px solid rgba(26, 24, 25, 0.12);
+}
+
+@media (min-width: 1024px) {
+  .item {
+    padding-block: var(--space-6);
+  }
+}
+
+.tick {
+  color: var(--rose-deep);
+  transform: translateY(2px);
+}
+
+.title {
+  font-size: clamp(18px, 2.2vw, 21px);
+  font-weight: 700;
+  letter-spacing: -0.022em;
+  line-height: 1.25;
+}
+
+.note {
+  margin-top: 4px;
+  font-size: 14.5px;
+  line-height: 1.5;
+  color: var(--ink-soft);
+}

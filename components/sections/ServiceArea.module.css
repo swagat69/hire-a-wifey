@@ -1,0 +1,87 @@
+.grid {
+  display: grid;
+  gap: var(--space-7);
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: 5fr 7fr;
+    gap: 80px;
+  }
+}
+
+.copy {
+  max-width: 460px;
+}
+
+.heading {
+  margin-bottom: var(--space-5);
+}
+
+/* --- Suburb grid ---------------------------------------------------
+   Set as a typographic index on hairlines. Never a comma-separated
+   keyword string (§22).
+   ------------------------------------------------------------------- */
+
+.suburbs {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 0 var(--space-6);
+  margin-top: var(--space-8);
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--line);
+}
+
+.suburb {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  padding-block: 11px;
+  border-bottom: 1px solid var(--line);
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: -0.012em;
+}
+
+.dot {
+  flex: none;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--rose);
+  transform: translateY(-3px);
+}
+
+.note {
+  display: grid;
+  gap: var(--space-4);
+  align-items: center;
+  margin-top: var(--space-7);
+}
+
+@media (min-width: 768px) {
+  .note {
+    grid-template-columns: 1fr auto;
+    gap: var(--space-6);
+  }
+}
+
+.noteText {
+  max-width: 46ch;
+  font-size: 16px;
+  color: var(--ink-soft);
+}
+
+.noteLink {
+  font-weight: 650;
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: var(--rose);
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 3px;
+}
+
+.noteLink:hover {
+  color: var(--rose-ink);
+}

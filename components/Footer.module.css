@@ -1,0 +1,152 @@
+.footer {
+  padding-block: var(--space-9) var(--space-6);
+  background: var(--bg-dark);
+  color: var(--white);
+}
+
+.top {
+  display: grid;
+  gap: var(--space-8);
+  padding-bottom: var(--space-8);
+}
+
+@media (min-width: 768px) {
+  .top {
+    grid-template-columns: 1.6fr 1fr 1fr;
+    gap: var(--space-8);
+  }
+}
+
+@media (min-width: 1024px) {
+  .top {
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 80px;
+  }
+}
+
+.logo {
+  display: block;
+  width: 168px;
+  margin-bottom: var(--space-5);
+}
+
+.logo img {
+  width: 100%;
+  height: auto;
+}
+
+.brandName {
+  margin-bottom: var(--space-3);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #8b8386;
+}
+
+.blurb {
+  max-width: 40ch;
+  margin-bottom: var(--space-5);
+  font-size: 15.5px;
+  line-height: 1.6;
+  color: #b1a9ac;
+}
+
+.tagline {
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--rose);
+}
+
+.colTitle {
+  margin-bottom: var(--space-4);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #8b8386;
+}
+
+.list li {
+  padding-block: 5px;
+  font-size: 15px;
+  color: #cdc6c9;
+}
+
+.contactLink {
+  display: inline-block;
+  padding-block: 5px;
+  font-size: 15.5px;
+  font-weight: 650;
+  color: var(--white);
+  text-decoration: none;
+  word-break: break-word;
+  transition: color 180ms var(--ease);
+}
+
+.contactLink:hover {
+  color: var(--rose);
+}
+
+.abn {
+  margin-top: var(--space-4);
+  font-size: 13.5px;
+  color: #8b8386;
+}
+
+.cta {
+  margin-top: var(--space-5);
+}
+
+/* --- Trust line ---------------------------------------------------- */
+
+.trust {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px var(--space-5);
+  padding-block: var(--space-5);
+  border-top: 1px solid var(--line-dark);
+  border-bottom: 1px solid var(--line-dark);
+}
+
+.trustItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #cdc6c9;
+}
+
+.trustTick {
+  flex: none;
+  color: var(--rose);
+}
+
+/* --- Legal --------------------------------------------------------- */
+
+.legal {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--space-3) var(--space-6);
+  padding-top: var(--space-5);
+  font-size: 13px;
+  color: #8b8386;
+}
+
+.legalLinks {
+  display: flex;
+  gap: var(--space-5);
+}
+
+.legalLinks a {
+  color: #8b8386;
+  text-decoration: none;
+}
+
+.legalLinks a:hover {
+  color: var(--white);
+}

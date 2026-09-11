@@ -1,0 +1,182 @@
+.hero {
+  position: relative;
+  padding-block: 40px 56px;
+  overflow: clip;
+}
+
+/* No decorative wash behind the hero: the earlier full-height blush block
+   read as a stray rectangle because it answered to the viewport rather
+   than to anything in the composition. The blush now sits as a deliberate
+   offset panel behind the photograph (see .figure::before). */
+
+.grid {
+  display: grid;
+  gap: var(--space-7);
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .hero {
+    padding-block: 72px 88px;
+  }
+
+  .grid {
+    grid-template-columns: 5fr 7fr;
+    gap: 48px;
+    min-height: 588px;
+  }
+}
+
+/* --- Copy --------------------------------------------------------- */
+
+.copy {
+  max-width: 520px;
+}
+
+.headline {
+  margin-bottom: var(--space-4);
+}
+
+.brandLine {
+  display: block;
+  color: var(--rose);
+}
+
+.tagline {
+  display: block;
+  margin-bottom: var(--space-5);
+  font-size: clamp(15px, 2.4vw, 17px);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+/* The SEO H2 has to be present and readable, but it must not out-shout
+   the hero headline — so it sits as a quiet standfirst above the rule. */
+.seoHeading {
+  padding-bottom: var(--space-5);
+  margin-bottom: var(--space-5);
+  border-bottom: 1px solid var(--line);
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.45;
+  letter-spacing: -0.005em;
+  color: var(--ink-faint);
+}
+
+.kicker {
+  margin-bottom: var(--space-4);
+  font-size: clamp(19px, 2.6vw, 22px);
+  font-weight: 700;
+  letter-spacing: -0.022em;
+  color: var(--ink);
+}
+
+.body p {
+  margin-bottom: var(--space-4);
+  max-width: 470px;
+}
+
+.body p:last-child {
+  margin-bottom: 0;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: var(--space-6);
+}
+
+@media (max-width: 479px) {
+  .actions {
+    flex-direction: column;
+  }
+}
+
+/* --- Image -------------------------------------------------------- */
+
+.figure {
+  position: relative;
+  margin: 0;
+}
+
+/* A blush panel sitting behind the photograph, offset up and to the right.
+   It is anchored to the image, so it reads as composition rather than as a
+   band that happens to end somewhere. */
+.figure::before {
+  content: "";
+  position: absolute;
+  inset: -22px -22px auto auto;
+  width: 62%;
+  height: 58%;
+  background: var(--blush);
+  border-radius: var(--radius-md);
+  z-index: -1;
+}
+
+@media (max-width: 767px) {
+  .figure::before {
+    inset: -14px -14px auto auto;
+    width: 56%;
+    height: 44%;
+  }
+}
+
+.frame {
+  position: relative;
+  aspect-ratio: 4 / 4.1;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--off-white);
+}
+
+.frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (min-width: 1024px) {
+  .figure {
+    margin-left: auto;
+    max-width: 610px;
+  }
+}
+
+/* Small caption plate anchored to the image — reinforces "local" without
+   another badge row. */
+.plate {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  padding: 14px 20px;
+  background: var(--white);
+  border-top-right-radius: var(--radius-md);
+  font-size: 13px;
+  font-weight: 650;
+  letter-spacing: 0.02em;
+}
+
+.plateDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--rose);
+  transform: translateY(-1px);
+}
+
+.plateNote {
+  color: var(--ink-faint);
+  font-weight: 500;
+}
+
+@media (max-width: 479px) {
+  .plateNote {
+    display: none;
+  }
+}

@@ -1,0 +1,71 @@
+/* Placed after the customer journey and deliberately lighter than the
+   sections above it, so it never competes with booking (§32). */
+
+.grid {
+  display: grid;
+  gap: var(--space-7);
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: 4fr 8fr;
+    gap: 72px;
+  }
+}
+
+.figure {
+  margin: 0;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  background: var(--white);
+  aspect-ratio: 4 / 4.6;
+}
+
+.figure img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.copy {
+  max-width: 620px;
+}
+
+.heading {
+  margin-bottom: var(--space-5);
+  font-size: clamp(28px, 4.6vw, 40px);
+  font-weight: 700;
+  letter-spacing: -0.032em;
+  line-height: 1.05;
+}
+
+.body p {
+  margin-bottom: var(--space-4);
+  font-size: 16.5px;
+  line-height: 1.62;
+  color: var(--ink-soft);
+}
+
+.notes {
+  display: grid;
+  gap: 10px;
+  margin: var(--space-5) 0 var(--space-6);
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--line);
+}
+
+.note {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 12px;
+  align-items: baseline;
+  font-size: 15.5px;
+  line-height: 1.5;
+  color: var(--ink-soft);
+}
+
+.tick {
+  color: var(--rose-deep);
+  transform: translateY(2px);
+}
