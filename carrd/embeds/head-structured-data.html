@@ -1,0 +1,34 @@
+<!--
+  OPTIONAL · Carrd Embed element
+    Type:       Code
+    Placement:  Head
+  Needs a Carrd Pro plan that includes Embeds.
+  Tells Google who you are and lets your FAQ appear as rich results.
+  Replace YOUR-DOMAIN.com and YOUR COUNTRY, and keep the questions here
+  identical to the ones on the page.
+-->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://YOUR-DOMAIN.com/#org",
+      "name": "Dog-Ear Book Club",
+      "url": "https://YOUR-DOMAIN.com/",
+      "logo": "https://YOUR-DOMAIN.com/icon.png",
+      "email": "hello@YOUR-DOMAIN.com"
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {"@type":"Question","name":"How does the membership work?","acceptedAnswer":{"@type":"Answer","text":"Each month we announce a handful of new hardcovers. Members pick one (or skip the month), and we ship it to your door."}},
+        {"@type":"Question","name":"Can I skip a month?","acceptedAnswer":{"@type":"Answer","text":"Yes. Skip any month before the deadline and you won't be charged."}},
+        {"@type":"Question","name":"Where do you ship?","acceptedAnswer":{"@type":"Answer","text":"We currently ship within YOUR COUNTRY. Shipping is free on every box."}},
+        {"@type":"Question","name":"Can I give a membership as a gift?","acceptedAnswer":{"@type":"Answer","text":"Yes. Choose a 3, 6 or 12-month gift and we'll email the recipient on the date you pick."}},
+        {"@type":"Question","name":"How do I cancel?","acceptedAnswer":{"@type":"Answer","text":"Cancel anytime from your account page. No phone calls, no fuss."}}
+      ]
+    }
+  ]
+}
+</script>
