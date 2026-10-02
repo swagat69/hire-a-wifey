@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<!--
+  DOG-EAR BOOK CLUB — Carrd-compatible preview
+  ----------------------------------------------------------------------------
+  Every block on this page maps to a native Carrd element:
+    Container (Default / Columns), Text, Image, Buttons, Links, List, Form,
+    Divider. No JavaScript. No nested containers.
+  Tilts, stickers and coloured book cards are baked into the images, so Carrd
+  needs no custom CSS to reproduce the look.
+
+  Only two optional extras use Carrd's Embed element (Pro plan):
+    1. Structured data in <head> (SEO)            → embeds/head-structured-data.html
+    2. FAQ as an open/close accordion              → embeds/faq-accordion.html
+  Without them the page still works: the FAQ falls back to plain Text.
+
+  "CARRD:" comments name the element and settings for each block.
+  The full build sheet is CARRD-BUILD-GUIDE.md.
+  Columns stack into one column at 736px, the breakpoint Carrd uses.
+-->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- CARRD: Settings → Metadata → Title (≈ 60 characters max) -->
+  <title>Dog-Ear Book Club | New Hardcovers Delivered Every Month</title>
+  <!-- CARRD: Settings → Metadata → Description (≈ 155 characters max) -->
+  <meta name="description" content="Pick a brand-new hardcover each month from hand-picked titles across every genre. Free shipping, fair prices and a club of readers to talk it over with.">
+
+  <!-- Carrd generates these from the Title, Description and Share Image in
+       Settings → Metadata, plus your custom domain. Shown here so the preview
+       behaves the same when shared. Replace YOUR-DOMAIN.com. -->
+  <link rel="canonical" href="https://YOUR-DOMAIN.com/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Dog-Ear Book Club">
+  <meta property="og:url" content="https://YOUR-DOMAIN.com/">
+  <meta property="og:title" content="Dog-Ear Book Club | New Hardcovers Delivered Every Month">
+  <meta property="og:description" content="Hand-picked new hardcovers across every genre, delivered monthly. Stories worth unboxing.">
+  <meta property="og:image" content="https://YOUR-DOMAIN.com/share-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#FFD447">
+  <!-- CARRD: Settings → Metadata → Icon (upload images/icon.png) -->
+  <link rel="icon" type="image/png" href="images/icon.png">
+
+  <!-- CARRD: Settings → Style → Fonts. All three are Google Fonts. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,800&family=Caveat:wght@700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- OPTIONAL — CARRD: Embed → Type: Code → Placement: Head (Pro plan).
+       Same code as embeds/head-structured-data.html. -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://YOUR-DOMAIN.com/#org",
+        "name": "Dog-Ear Book Club",
+        "url": "https://YOUR-DOMAIN.com/",
+        "logo": "https://YOUR-DOMAIN.com/icon.png",
+        "email": "hello@YOUR-DOMAIN.com"
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {"@type":"Question","name":"How does the membership work?","acceptedAnswer":{"@type":"Answer","text":"Each month we announce a handful of new hardcovers. Members pick one (or skip the month), and we ship it to your door."}},
+          {"@type":"Question","name":"Can I skip a month?","acceptedAnswer":{"@type":"Answer","text":"Yes. Skip any month before the deadline and you won't be charged."}},
+          {"@type":"Question","name":"Where do you ship?","acceptedAnswer":{"@type":"Answer","text":"We currently ship within YOUR COUNTRY. Shipping is free on every box."}},
+          {"@type":"Question","name":"Can I give a membership as a gift?","acceptedAnswer":{"@type":"Answer","text":"Yes. Choose a 3, 6 or 12-month gift and we'll email the recipient on the date you pick."}},
+          {"@type":"Question","name":"How do I cancel?","acceptedAnswer":{"@type":"Answer","text":"Cancel anytime from your account page. No phone calls, no fuss."}}
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    /* ==================================================================
+       Design tokens → in Carrd, these are colours you type into each
+       element/container's Style panel. Keep this list handy.
+       ================================================================== */
+    :root {
+      --navy:   #1C1A3A;  /* all text, footer background */
+      --yellow: #FFD447;  /* hero, "why" band */
+      --orange: #FFB938;
+      --pink:   #F23FCF;  /* genre band, primary buttons */
+      --lilac:  #EBDDFF;  /* how-it-works block */
+      --purple: #B79CFF;
+      --mint:   #9FF0E6;  /* gift-box block */
+      --lime:   #D9F27A;  /* favourites band */
+      --blush:  #FFB3D9;  /* exclusive block */
+      --cream:  #FFF8EC;
+      --white:  #FFFFFF;
+
+      --page:   78rem;    /* CARRD: Settings → Page → Width */
+      --inner:  68rem;    /* CARRD: Container → Inner width */
+      --radius: 2.5rem;   /* CARRD: Container → Border radius (rounded blocks) */
+      --pad-y:  5rem;     /* CARRD: Container → Padding (top/bottom) */
+      --pad-x:  2.5rem;   /* CARRD: Container → Padding (left/right) */
+      --gap:    2rem;     /* CARRD: Columns → Spacing */
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    body {
+      margin: 0; background: var(--white); color: var(--navy);
+      font-family: "Inter", system-ui, sans-serif; font-size: 1.0625rem; line-height: 1.6;
+      -webkit-font-smoothing: antialiased; overflow-x: hidden;
+    }
+    img { display: block; max-width: 100%; height: auto; }
+    a { color: inherit; }
+    h1, h2, h3, p, ul { margin: 0; }
+
+    /* ---- Containers ------------------------------------------------------ */
+    .full  { padding: var(--pad-y) var(--pad-x); }                  /* Width: Full */
+    .block {                                                        /* Width: Default + radius */
+      max-width: var(--page); margin: 1.25rem auto; border-radius: var(--radius);
+      padding: var(--pad-y) var(--pad-x);
+    }
+    .inner { max-width: var(--inner); margin: 0 auto; }
+    .inner > * + *, .col > * + * { margin-top: 1.25rem; }
+    .center { text-align: center; }
+    .center .buttons { justify-content: center; }
+    .flush { padding-left: 0; padding-right: 0; }
+
+    .bg-yellow { background: var(--yellow); }
+    .bg-hero   { background: var(--yellow) url("images/hero-blobs.jpg") center / cover no-repeat; }
+    .bg-pink   { background: var(--pink); }
+    .bg-lilac  { background: var(--lilac); }
+    .bg-mint   { background: var(--mint); }
+    .bg-lime   { background: var(--lime); }
+    .bg-blush  { background: var(--blush); }
+    .bg-navy   { background: var(--navy); color: var(--cream); }
+
+    /* ---- Columns --------------------------------------------------------- */
+    .columns { display: grid; gap: var(--gap); align-items: center; }
+    .top { align-items: start; }
+    .c-2   { grid-template-columns: 1fr 1fr; }
+    .c-4   { grid-template-columns: repeat(4, 1fr); }
+    .c-5   { grid-template-columns: repeat(5, 1fr); }
+    .c-55  { grid-template-columns: 55fr 45fr; }
+    .c-3x  { grid-template-columns: 1fr 1.3fr 1fr; }
+    .c-hdr { grid-template-columns: auto 1fr auto; }
+    .c-ftr { grid-template-columns: 1.2fr 1fr 1.4fr; }
+
+    /* ---- Text ------------------------------------------------------------ */
+    .display { font-family: "Bricolage Grotesque", "Archivo Black", sans-serif; font-weight: 800; letter-spacing: -0.035em; }
+    .h1 { font-size: clamp(3rem, 8.5vw, 6.25rem); line-height: .92; }
+    .h2 { font-size: clamp(2.25rem, 5.5vw, 3.75rem); line-height: 1; }
+    .h3 { font-size: 1.375rem; line-height: 1.15; letter-spacing: -0.02em; }
+    .mega { font-size: clamp(2.5rem, 7.6vw, 5.5rem); line-height: .98; }
+    .hand { font-family: "Caveat", cursive; font-weight: 700; font-size: 1.75rem; line-height: 1.1; }
+    .tag  { font-size: .75rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+    .lead { font-size: 1.1875rem; }
+    .small { font-size: .9375rem; }
+    .muted { opacity: .78; }
+    .measure { max-width: 34rem; }
+    .center .measure { margin-left: auto; margin-right: auto; }
+
+    /* ---- Buttons (CARRD: Buttons element, Style: pill) -------------------- */
+    .buttons { display: flex; flex-wrap: wrap; gap: .75rem; }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      min-height: 3.25rem; padding: 0 1.9rem; border-radius: 999px;
+      font-weight: 700; font-size: 1.0625rem; text-decoration: none;
+      background: var(--pink); color: var(--white); border: 2px solid var(--navy);
+      box-shadow: 0 4px 0 var(--navy); transition: transform .15s, box-shadow .15s;
+    }
+    .btn:hover { transform: translateY(2px); box-shadow: 0 2px 0 var(--navy); }
+    .btn.alt { background: var(--white); color: var(--navy); }
+    .btn.sm  { min-height: 2.6rem; padding: 0 1.25rem; font-size: .9375rem; }
+
+    /* ---- Header ----------------------------------------------------------- */
+    .header { --pad-y: .9rem; }
+    .brand { display: flex; align-items: center; gap: .6rem; text-decoration: none; }
+    .brand img { width: 2.6rem; height: 2.6rem; }
+    .brand span { font-size: 1.5rem; }
+    .links { display: flex; flex-wrap: wrap; justify-content: center; gap: .4rem; }
+    .links a {
+      text-decoration: none; font-size: .875rem; font-weight: 600;
+      padding: .45rem .95rem; border: 1.5px solid var(--navy); border-radius: 999px;
+    }
+    .links a:hover { background: var(--yellow); }
+
+    /* ---- Book / step cards (Image + Text in a column) ------------------- */
+    .card img { width: 100%; }
+    .card .h3 { margin-top: .75rem; }
+    .card p + p { margin-top: .25rem; }
+
+    /* ---- Genre list (CARRD: one Text element, centred, line breaks) ------ */
+    .genres { font-size: clamp(2rem, 5.2vw, 3.6rem); line-height: 1.04; }
+
+    /* ---- FAQ ---------------------------------------------------------------
+       Preview uses <details> = the optional Embed in embeds/faq-accordion.html.
+       Native fallback: one Text element with **question** + answer pairs. */
+    .faq { max-width: 46rem; margin: 2.25rem auto 0; text-align: left; }
+    .faq details { border: 2px solid var(--navy); border-radius: 1rem; background: var(--white); }
+    .faq details + details { margin-top: .75rem; }
+    .faq summary {
+      list-style: none; cursor: pointer; padding: 1rem 1.25rem; font-weight: 700;
+      display: flex; justify-content: space-between; gap: 1rem; align-items: center;
+    }
+    .faq summary::-webkit-details-marker { display: none; }
+    .faq summary::after { content: "+"; font-size: 1.5rem; line-height: 1; transition: transform .2s; }
+    .faq details[open] summary::after { transform: rotate(45deg); }
+    .faq details p { padding: 0 1.25rem 1.1rem; }
+
+    /* ---- Ribbon (CARRD: Image, full width, container padding 0) ---------- */
+    .ribbon { padding: 1rem 0; overflow: hidden; }
+    .ribbon img { width: 100%; }
+
+    /* ---- Form (CARRD: Form element, Pro) ---------------------------------- */
+    .form { display: flex; gap: .5rem; flex-wrap: wrap; }
+    .form input {
+      flex: 1 1 14rem; min-height: 3.25rem; padding: 0 1.25rem; font: inherit;
+      border: 2px solid var(--cream); border-radius: 999px; background: transparent; color: var(--cream);
+    }
+    .form input::placeholder { color: var(--cream); opacity: .7; }
+    .form input:focus { outline: 3px solid var(--yellow); outline-offset: 2px; }
+    .form .btn { cursor: pointer; font-family: inherit; border-color: var(--cream); box-shadow: 0 4px 0 var(--cream); }
+    .footer a { text-decoration: none; }
+    .footer a:hover { text-decoration: underline; }
+    .footer .list { list-style: none; padding: 0; }
+    .footer .list li + li { margin-top: .4rem; }
+    .divider { border: 0; border-top: 1px solid rgba(255,248,236,.25); margin: 0; }
+
+    /* ---- Breakpoints (Carrd: 980px tablet, 736px mobile) ---------------- */
+    @media (max-width: 980px) {
+      :root { --pad-y: 4rem; --pad-x: 1.75rem; }
+      .c-5 { grid-template-columns: repeat(3, 1fr); }
+      .c-hdr { grid-template-columns: 1fr auto; }
+      .c-hdr .links { display: none; }       /* CARRD: Links element → Visibility: hide on tablet/mobile */
+    }
+    @media (max-width: 736px) {
+      :root { --pad-y: 3.25rem; --pad-x: 1rem; --radius: 1.75rem; --gap: 1.75rem; }
+      .block { margin: .75rem; }
+      .c-2, .c-4, .c-55, .c-3x, .c-ftr { grid-template-columns: 1fr; }
+      .c-5, .c-4.cards { grid-template-columns: 1fr 1fr; }
+      .hide-mobile { display: none; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .btn, .faq summary::after { transition: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ==========================================================================
+     01 HEADER — CARRD: Container (Columns: Auto / Fill / Auto), Width: Full
+       col 1  Image (icon.png) + Text "Dog-Ear"   → or one Image of the wordmark
+       col 2  Links element, style: pill outline
+       col 3  Buttons element
+     ========================================================================== -->
+<header class="full header" id="top">
+  <div class="inner" style="max-width:var(--page)">
+    <div class="columns c-hdr">
+      <a class="brand" href="#top" aria-label="Dog-Ear Book Club, home">
+        <img src="images/icon.png" alt="" width="512" height="512">
+        <span class="display">Dog-Ear</span>
+      </a>
+      <nav class="links" aria-label="Main">
+        <a href="#books">This Month</a>
+        <a href="#how">How It Works</a>
+        <a href="#gift">Gifting</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <div class="buttons"><a class="btn sm" href="#join">Join the Club</a></div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- ==========================================================================
+     02 HERO — CARRD: Container (Columns 55 / 45), Width: Full,
+       Background: Image hero-blobs.jpg (cover, centre)
+     ========================================================================== -->
+<section class="full bg-hero" style="--pad-y:4.5rem">
+  <div class="inner">
+    <div class="columns c-55">
+      <div class="col">
+        <h1 class="display h1">Stories worth unboxing.</h1>
+        <p class="lead measure">Every month we hand-pick a few brand-new hardcovers across every genre. Choose your favourite, we ship it free, and you've got a whole club to talk it over with.</p>
+        <div class="buttons"><a class="btn" href="#join">Pick your first book</a></div>
+      </div>
+      <div class="col">
+        <img src="images/hero-books.png" width="900" height="900"
+             alt="Two tilted hardcover books, One Bad Night and Midnight Cartography, with a handwritten note: new picks on the 1st">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     03 THIS MONTH'S BOOKS — CARRD: Container (Default) heading,
+       then Container (Columns ×5). Each column: Image + Text.
+       (Alternative: one Gallery element with captions.)
+     ========================================================================== -->
+<section class="full" id="books">
+  <div class="inner center">
+    <p class="hand" style="color:var(--pink)">fresh off the press ↓</p>
+    <h2 class="display h2">This month's books</h2>
+    <p class="muted">New picks land on the 1st of every month. Grab one — or a few.</p>
+  </div>
+  <div class="inner" style="max-width:var(--page);margin-top:2.5rem">
+    <div class="columns c-5 top">
+      <article class="card">
+        <img src="images/pick-1.png" width="600" height="660" loading="lazy" alt="The Quiet Orchard by Mara Ellison, on a lime green card">
+        <p class="tag muted">Literary fiction</p>
+        <h3 class="display h3">The Quiet Orchard</h3>
+        <p class="small muted">Three sisters, one failing farm, and the summer that changes everything.</p>
+      </article>
+      <article class="card">
+        <img src="images/pick-2.png" width="600" height="660" loading="lazy" alt="Salt &amp; Static by Theo Vance, on a yellow card">
+        <p class="tag muted">Sci-fi</p>
+        <h3 class="display h3">Salt &amp; Static</h3>
+        <p class="small muted">A radio operator hears a signal from a ship that sank a century ago.</p>
+      </article>
+      <article class="card">
+        <img src="images/pick-3.png" width="600" height="660" loading="lazy" alt="Midnight Cartography by June Okafor, on a purple card">
+        <p class="tag muted">Fantasy</p>
+        <h3 class="display h3">Midnight Cartography</h3>
+        <p class="small muted">A mapmaker charts a city that only exists after dark.</p>
+      </article>
+      <article class="card">
+        <img src="images/pick-4.png" width="600" height="660" loading="lazy" alt="Bones of the Lighthouse by R. K. Linden, on a mint card">
+        <p class="tag muted">Thriller</p>
+        <h3 class="display h3">Bones of the Lighthouse</h3>
+        <p class="small muted">Five strangers, one island, and a keeper who never left.</p>
+      </article>
+      <article class="card">
+        <img src="images/pick-5.png" width="600" height="660" loading="lazy" alt="Heatwave Hotel by Felix Moreau, on a pink card">
+        <p class="tag muted">Romance</p>
+        <h3 class="display h3">Heatwave Hotel</h3>
+        <p class="small muted">Two rival wedding planners. One booking. Zero air conditioning.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     04 HOW IT WORKS — CARRD: Container (Columns: Fill / Auto), Width: Default,
+       Background #EBDDFF, Border radius 2.5rem
+       then Container (Columns ×4), same background + radius 0 top
+       → or put both inside one Container with Type: Default and use a
+         second Columns container directly below with matching background.
+     ========================================================================== -->
+<section class="block bg-lilac" id="how">
+  <div class="inner">
+    <div class="columns c-2">
+      <div class="col">
+        <h2 class="display h2">How it works</h2>
+        <p class="hand">seriously, it's this easy</p>
+      </div>
+      <div class="buttons" style="justify-content:flex-end"><a class="btn" href="#join">Get started</a></div>
+    </div>
+    <div class="columns c-4 cards top" style="margin-top:2.5rem">
+      <article class="card">
+        <img src="images/step-1.png" width="600" height="600" loading="lazy" alt="">
+        <h3 class="display h3">Explore the picks</h3>
+        <p class="small">Browse this month's hardcovers and read a little about each one.</p>
+      </article>
+      <article class="card">
+        <img src="images/step-2.png" width="600" height="600" loading="lazy" alt="">
+        <h3 class="display h3">Build your box</h3>
+        <p class="small">Choose one book, or add a few extras from the shop.</p>
+      </article>
+      <article class="card">
+        <img src="images/step-3.png" width="600" height="600" loading="lazy" alt="">
+        <h3 class="display h3">Unbox it</h3>
+        <p class="small">Your box ships free and lands at your door within days.</p>
+      </article>
+      <article class="card">
+        <img src="images/step-4.png" width="600" height="600" loading="lazy" alt="">
+        <h3 class="display h3">Talk about it</h3>
+        <p class="small">Join the members' chat and swap thoughts with other readers.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     05 THE BOX — CARRD: Container (Default), Width: Default,
+       Background #9FF0E6, Border radius 2.5rem. One Image element.
+     ========================================================================== -->
+<section class="block bg-mint center" style="--pad-y:3.5rem">
+  <div class="inner">
+    <img src="images/gift-box.png" width="1000" height="760" loading="lazy" style="width:min(100%,40rem);margin:0 auto"
+         alt="A Dog-Ear gift box wrapped in pink and purple paper with a yellow ribbon">
+    <p class="hand">every box, wrapped like a present</p>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     06 GENRES — CARRD: Container (Default), Width: Full, Background #F23FCF.
+       One Text element (centred, line breaks) + one small hand-written Text.
+     ========================================================================== -->
+<section class="full bg-pink center" style="--pad-y:6rem">
+  <div class="inner">
+    <p class="hand">can't decide? we'll help you choose</p>
+    <p class="tag">Choose from</p>
+    <p class="display genres">Horror<br>Science Fiction<br>Romance<br>Thriller<br>Literary Fiction<br>Fantasy<br>Mystery<br>Historical Fiction<br>Magical Realism<br>Contemporary Fiction<br>and more!</p>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     07 WHY — CARRD: Container (Default), Width: Full, Background #FFD447.
+       One Image element (why-stickers.png). Alt text carries the words.
+     ========================================================================== -->
+<section class="full bg-yellow" style="--pad-y:4rem">
+  <div class="inner">
+    <img src="images/why-stickers.png" width="1200" height="580" loading="lazy" style="margin:0 auto"
+         alt="Why Dog-Ear? A genre for every mood. Free shipping. Fair prices. Real hardcovers. Hand-picked reads.">
+  </div>
+</section>
+
+<!-- ==========================================================================
+     08 FAQ — CARRD: Container (Default) heading + Embed (faq-accordion.html)
+       + Buttons. Native fallback: replace the Embed with one Text element.
+     ========================================================================== -->
+<section class="full center" id="faq">
+  <div class="inner">
+    <h2 class="display h2">Common questions</h2>
+    <div class="faq">
+      <details><summary>How does the membership work?</summary><p>Each month we announce a handful of new hardcovers. Members pick one (or skip the month), and we ship it to your door.</p></details>
+      <details><summary>Can I skip a month?</summary><p>Yes. Skip any month before the deadline and you won't be charged.</p></details>
+      <details><summary>Where do you ship?</summary><p>We currently ship within YOUR COUNTRY. Shipping is free on every box.</p></details>
+      <details><summary>Can I give a membership as a gift?</summary><p>Yes. Choose a 3, 6 or 12-month gift and we'll email the recipient on the date you pick.</p></details>
+      <details><summary>How do I cancel?</summary><p>Cancel anytime from your account page. No phone calls, no fuss.</p></details>
+    </div>
+    <div class="buttons" style="margin-top:2rem"><a class="btn alt" href="mailto:hello@YOUR-DOMAIN.com">Still stuck? Email us</a></div>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     09 GIFTING — CARRD: Container (Default) for the big heading,
+       then Container (Columns 50 / 50).
+     ========================================================================== -->
+<section class="full" id="gift" style="padding-top:2rem">
+  <div class="inner">
+    <h2 class="display mega">A gift that outlasts the wrapping paper.</h2>
+    <div class="columns c-2" style="margin-top:2rem">
+      <div class="col">
+        <p class="lead measure">Give 3, 6 or 12 months of new hardcovers. They pick the books, we handle the shipping, and you get the credit for being thoughtful.</p>
+        <div class="buttons"><a class="btn" href="#join">Give a membership</a></div>
+        <p class="hand" style="color:var(--pink)">psst — it's the perfect last-minute gift</p>
+      </div>
+      <div class="col">
+        <img src="images/gift-box.png" width="1000" height="760" loading="lazy" alt="">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     10 RIBBON — CARRD: Container (Default), Width: Full, Padding: 0.
+       One Image element, width 100%.
+     ========================================================================== -->
+<section class="ribbon" aria-label="New books every month. Free shipping. Join the club.">
+  <img src="images/ribbon.png" width="1600" height="260" loading="lazy" alt="">
+</section>
+
+<!-- ==========================================================================
+     11 FAVOURITES — CARRD: Container (Default), Width: Full, Background #D9F27A
+       heading, then Container (Columns ×4) with Image + Text.
+     ========================================================================== -->
+<section class="full bg-lime">
+  <div class="inner center">
+    <p class="hand">🏆 voted by members</p>
+    <h2 class="display h2">Members' favourites</h2>
+    <p class="measure">Every month members vote for the best book in the box. Here are the latest winners.</p>
+  </div>
+  <div class="inner" style="max-width:var(--page);margin-top:2.5rem">
+    <div class="columns c-4 cards top">
+      <article class="card"><img src="images/fav-1.png" width="600" height="660" loading="lazy" alt="A Small Infinity by Priya Sandoval, September winner"><h3 class="display h3">A Small Infinity</h3><p class="small">Priya Sandoval</p></article>
+      <article class="card"><img src="images/fav-2.png" width="600" height="660" loading="lazy" alt="One Bad Night by Sophie Arden, August winner"><h3 class="display h3">One Bad Night</h3><p class="small">Sophie Arden</p></article>
+      <article class="card"><img src="images/fav-3.png" width="600" height="660" loading="lazy" alt="Salt &amp; Static by Theo Vance, July winner"><h3 class="display h3">Salt &amp; Static</h3><p class="small">Theo Vance</p></article>
+      <article class="card"><img src="images/fav-4.png" width="600" height="660" loading="lazy" alt="Heatwave Hotel by Felix Moreau, June winner"><h3 class="display h3">Heatwave Hotel</h3><p class="small">Felix Moreau</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     12 EXCLUSIVE — CARRD: Container (Default) heading, Width: Default,
+       Background #FFB3D9, radius 2.5rem
+       then Container (Columns 1 / 1.3 / 1), same background.
+     ========================================================================== -->
+<section class="block bg-blush">
+  <div class="inner center">
+    <h2 class="display h2">Club exclusive</h2>
+    <p class="measure">Some books you can only get here — special editions, signed copies and early releases for members.</p>
+  </div>
+  <div class="inner" style="margin-top:2rem">
+    <div class="columns c-3x">
+      <p class="hand center hide-mobile">a signed first edition, just for members ✍️</p>
+      <div class="col center">
+        <img src="images/exclusive.png" width="600" height="660" loading="lazy" style="width:min(100%,22rem);margin:0 auto"
+             alt="One Bad Night by Sophie Arden, special edition only available to members">
+        <h3 class="display h3">One Bad Night &amp; Other Stories</h3>
+        <div class="buttons"><a class="btn" href="#join">Get it with your box</a></div>
+      </div>
+      <p class="hand center hide-mobile">only 500 copies ever printed</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ==========================================================================
+     13 FOOTER — CARRD: Container (Columns 1.2 / 1 / 1.4), Width: Full,
+       Background #1C1A3A. Col 3 holds a Form element (Pro) → email list.
+     ========================================================================== -->
+<footer class="full bg-navy footer" id="join">
+  <div class="inner" style="max-width:var(--page)">
+    <div class="columns c-ftr top">
+      <div class="col">
+        <a class="brand" href="#top"><img src="images/icon.png" alt="" width="512" height="512"><span class="display">Dog-Ear</span></a>
+        <p class="small muted measure">New hardcovers, hand-picked every month and delivered free. Stories worth unboxing.</p>
+      </div>
+      <div class="col">
+        <p class="tag muted">Explore</p>
+        <ul class="list small">
+          <li><a href="#books">This month's books</a></li>
+          <li><a href="#how">How it works</a></li>
+          <li><a href="#gift">Gift a membership</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="mailto:hello@YOUR-DOMAIN.com">Contact</a></li>
+        </ul>
+      </div>
+      <div class="col">
+        <h2 class="display h3" style="font-size:1.75rem">Join our mailing list</h2>
+        <p class="small muted">New picks, member votes and the occasional discount. No spam.</p>
+        <!-- Preview only — Carrd's Form element handles delivery. -->
+        <form class="form" onsubmit="return false" aria-label="Mailing list">
+          <label for="ml-email" class="tag" style="position:absolute;left:-9999px">Email address</label>
+          <input id="ml-email" type="email" name="email" placeholder="Email address" autocomplete="email" required>
+          <button class="btn" type="submit">Subscribe</button>
+        </form>
+      </div>
+    </div>
+    <hr class="divider" style="margin-top:3rem">
+    <p class="small muted" style="margin-top:1.25rem">© Dog-Ear Book Club · <a href="#">Privacy</a> · <a href="#">Terms</a></p>
+  </div>
+</footer>
+
+</body>
+</html>

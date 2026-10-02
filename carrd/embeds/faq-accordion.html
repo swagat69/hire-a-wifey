@@ -1,0 +1,29 @@
+<!--
+  OPTIONAL · Carrd Embed element
+    Type:       Code
+    Placement:  Inline
+  Needs a Carrd Pro plan that includes Embeds.
+  An open/close FAQ list, written in plain HTML + CSS with no JavaScript,
+  so it adds almost nothing to page weight.
+  To add a question, copy one <details>…</details> block.
+-->
+<style>
+  .dg-faq { max-width: 46rem; margin: 0 auto; text-align: left; font-family: "Inter", system-ui, sans-serif; color: #1C1A3A; }
+  .dg-faq details { border: 2px solid #1C1A3A; border-radius: 1rem; background: #fff; }
+  .dg-faq details + details { margin-top: .75rem; }
+  .dg-faq summary { list-style: none; cursor: pointer; padding: 1rem 1.25rem; font-weight: 700;
+    display: flex; justify-content: space-between; gap: 1rem; align-items: center; }
+  .dg-faq summary::-webkit-details-marker { display: none; }
+  .dg-faq summary::after { content: "+"; font-size: 1.5rem; line-height: 1; transition: transform .2s; }
+  .dg-faq details[open] summary::after { transform: rotate(45deg); }
+  .dg-faq summary:focus-visible { outline: 3px solid #F23FCF; outline-offset: 2px; border-radius: 1rem; }
+  .dg-faq p { margin: 0; padding: 0 1.25rem 1.1rem; line-height: 1.6; }
+  @media (prefers-reduced-motion: reduce) { .dg-faq summary::after { transition: none; } }
+</style>
+<div class="dg-faq">
+  <details><summary>How does the membership work?</summary><p>Each month we announce a handful of new hardcovers. Members pick one (or skip the month), and we ship it to your door.</p></details>
+  <details><summary>Can I skip a month?</summary><p>Yes. Skip any month before the deadline and you won't be charged.</p></details>
+  <details><summary>Where do you ship?</summary><p>We currently ship within YOUR COUNTRY. Shipping is free on every box.</p></details>
+  <details><summary>Can I give a membership as a gift?</summary><p>Yes. Choose a 3, 6 or 12-month gift and we'll email the recipient on the date you pick.</p></details>
+  <details><summary>How do I cancel?</summary><p>Cancel anytime from your account page. No phone calls, no fuss.</p></details>
+</div>
