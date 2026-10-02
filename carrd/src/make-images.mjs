@@ -138,12 +138,56 @@ const SHARE = `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630"
   <g transform="translate(760 180) rotate(-10)"><rect width="230" height="345" fill="#C8321E"/><rect x="18" y="30" width="170" height="22" fill="#FFE7A3"/><rect x="18" y="64" width="110" height="22" fill="#FFE7A3"/><circle cx="160" cy="180" r="44" fill="#FFE7A3"/></g>
 </svg>`;
 
-const ICON = `<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">${FONT}
-  <rect width="512" height="512" rx="112" fill="#F23FCF"/>
-  <path d="M136 120 H330 L380 170 V392 H136Z" fill="#FFD447"/>
-  <path d="M330 120 V170 H380Z" fill="#FFB938"/>
-  <text x="256" y="340" text-anchor="middle" font-family="Bricolage Grotesque" font-weight="800" font-size="170" fill="#1C1A3A">D</text>
-</svg>`;
+// Site icon options. ICON_CHOICE picks which one becomes icon.png (used for
+// the favicon, header and footer). All options are also saved as
+// icon-<name>.png so you can compare them.
+const ICON_CHOICE = "dog";
+const iconSVG = (bg, body) =>
+  `<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512"><rect width="512" height="512" rx="112" fill="${bg}"/>${body}</svg>`;
+const ICONS = {
+  // A dog with one folded ear — the "dog-ear" pun.
+  dog: iconSVG("#FFD447", `
+    <path d="M150 170 C 110 150 80 200 100 260 C 112 296 140 300 160 280Z" fill="#1C1A3A"/>
+    <path d="M362 150 L 420 120 L 400 210Z" fill="#1C1A3A"/>
+    <ellipse cx="256" cy="280" rx="130" ry="120" fill="#F23FCF"/>
+    <ellipse cx="256" cy="345" rx="70" ry="52" fill="#FFF8EC"/>
+    <circle cx="208" cy="262" r="16" fill="#1C1A3A"/><circle cx="304" cy="262" r="16" fill="#1C1A3A"/>
+    <circle cx="214" cy="256" r="5" fill="#fff"/><circle cx="310" cy="256" r="5" fill="#fff"/>
+    <ellipse cx="256" cy="322" rx="24" ry="17" fill="#1C1A3A"/>
+    <path d="M256 338 V 360 M 256 360 C 244 374 228 372 222 362 M 256 360 C 268 374 284 372 290 362" stroke="#1C1A3A" stroke-width="8" fill="none" stroke-linecap="round"/>`),
+  // A page with its corner folded over.
+  page: iconSVG("#F23FCF", `
+    <path d="M140 96 H 310 L 372 158 V 416 H 140Z" fill="#FFD447"/>
+    <path d="M310 96 V 158 H 372Z" fill="#FFB938"/>
+    <path d="M310 96 L 372 158 H 310Z" fill="#1C1A3A" opacity=".12"/>
+    <g stroke="#1C1A3A" stroke-width="16" stroke-linecap="round"><path d="M184 220 H 328"/><path d="M184 270 H 328"/><path d="M184 320 H 280"/></g>`),
+  // An open book with a bookmark ribbon.
+  open: iconSVG("#1C1A3A", `
+    <path d="M256 160 C 210 128 140 124 92 138 V 380 C 140 366 210 370 256 400Z" fill="#FFF8EC"/>
+    <path d="M256 160 C 302 128 372 124 420 138 V 380 C 372 366 302 370 256 400Z" fill="#FFD447"/>
+    <path d="M256 160 V 400" stroke="#1C1A3A" stroke-width="8"/>
+    <path d="M330 136 V 250 L 352 230 L 374 250 V 132" fill="#F23FCF"/>
+    <g stroke="#1C1A3A" stroke-width="10" stroke-linecap="round" opacity=".35"><path d="M130 200 C 170 192 200 194 226 204"/><path d="M130 250 C 170 242 200 244 226 254"/><path d="M130 300 C 170 292 200 294 226 304"/></g>`),
+  // Three stacked, slightly tilted books.
+  stack: iconSVG("#B79CFF", `
+    <rect x="110" y="330" width="300" height="64" rx="10" fill="#1C1A3A"/>
+    <rect x="130" y="342" width="16" height="40" fill="#FFD447"/>
+    <g transform="rotate(-6 256 290)"><rect x="126" y="262" width="270" height="62" rx="10" fill="#F23FCF"/><rect x="146" y="274" width="200" height="12" rx="6" fill="#FFF8EC"/></g>
+    <g transform="rotate(5 256 220)"><rect x="140" y="190" width="240" height="60" rx="10" fill="#FFD447"/><rect x="350" y="190" width="16" height="60" fill="#1C1A3A"/></g>
+    <path d="M330 120 l 10 26 l 26 10 l -26 10 l -10 26 l -10 -26 l -26 -10 l 26 -10Z" fill="#FFF8EC"/>`),
+  // A gift box with a book peeking out.
+  box: iconSVG("#9FF0E6", `
+    <g transform="rotate(-10 256 200)"><rect x="196" y="96" width="120" height="170" rx="8" fill="#F23FCF"/><rect x="214" y="122" width="84" height="14" rx="7" fill="#FFD447"/></g>
+    <path d="M100 236 L 256 290 L 412 236 L 412 400 L 256 456 L 100 400Z" fill="#1C1A3A"/>
+    <path d="M100 236 L 256 290 L 256 456 L 100 400Z" fill="#2A2650"/>
+    <path d="M178 263 V 428" stroke="#FFD447" stroke-width="30"/><path d="M334 263 V 428" stroke="#FFD447" stroke-width="30"/>`),
+  // A speech bubble shaped like a book — "talk about it".
+  chat: iconSVG("#FF7A3D", `
+    <path d="M110 130 H 402 A 30 30 0 0 1 432 160 V 330 A 30 30 0 0 1 402 360 H 220 L 150 420 L 162 360 H 110 A 30 30 0 0 1 80 330 V 160 A 30 30 0 0 1 110 130Z" fill="#FFF8EC"/>
+    <path d="M256 170 V 320" stroke="#1C1A3A" stroke-width="10"/>
+    <path d="M130 180 C 180 168 220 172 246 186 V 320 C 220 306 180 302 130 314Z" fill="#FFD447"/>
+    <path d="M382 180 C 332 168 292 172 266 186 V 320 C 292 306 332 302 382 314Z" fill="#F23FCF"/>`),
+};
 
 /* ------------------------------------------------- composites (phase 2) */
 // These place the rendered covers onto coloured, tilted cards so the tilt and
@@ -246,7 +290,9 @@ for (const c of COVERS) await render({ name: c.file, svg: coverSVG(c), w: 400, h
 await render({ name: "gift-box", svg: BOX, w: 1000, h: 760, type: "png" });
 await render({ name: "hero-blobs", svg: BLOBS, w: 1600, h: 900, type: "jpeg" });
 await render({ name: "share-image", svg: SHARE, w: 1200, h: 630, type: "jpeg" });
-await render({ name: "icon", svg: ICON, w: 512, h: 512, type: "png" });
+for (const [key, svg] of Object.entries(ICONS))
+  await render({ name: `icon-${key}`, svg, w: 512, h: 512, type: "png" });
+await render({ name: "icon", svg: ICONS[ICON_CHOICE], w: 512, h: 512, type: "png" });
 
 // Phase 2 — composites that reuse the covers.
 await render({ name: "hero-books", svg: HERO_BOOKS(), w: 900, h: 900, type: "png" });

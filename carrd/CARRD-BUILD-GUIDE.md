@@ -139,7 +139,7 @@ All files are in `images/`. They are already sized and compressed.
 
 | File | Where |
 |---|---|
-| `icon.png` | Metadata icon + header + footer |
+| `icon.png` | Metadata icon + header + footer (currently the dog; other options are `icon-page`, `icon-open`, `icon-stack`, `icon-box`, `icon-chat` — upload whichever you prefer, or set `ICON_CHOICE` in `src/make-images.mjs`) |
 | `share-image.jpg` | Metadata share image |
 | `hero-blobs.jpg` | Hero container background |
 | `hero-books.png` | Hero, right column |
